@@ -69,7 +69,6 @@ public class Principal extends Activity {
                 mostrarFoto();
             }
         });
-        registerForContextMenu(gv);
     }
 
     private void initCursor(){
@@ -103,6 +102,13 @@ public class Principal extends Activity {
                     return true;
                 }
                 return false;
+            }
+        });
+        alert.setOnCancelListener(new DialogInterface.OnCancelListener() {
+
+            @Override
+            public void onCancel(DialogInterface dialog) {
+                Principal.this.setFoto(-1);
             }
         });
         Picasso.with(this).load(uri).into(iv);
